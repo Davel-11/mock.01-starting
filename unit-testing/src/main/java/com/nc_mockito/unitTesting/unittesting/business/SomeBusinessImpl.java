@@ -1,6 +1,15 @@
 package com.nc_mockito.unitTesting.unittesting.business;
 
+import com.nc_mockito.unitTesting.unittesting.data.SomeDataService;
+
 public class SomeBusinessImpl {
+	
+	private SomeDataService someDataService;
+	
+	public void setSomeDataService(SomeDataService someDataService) {
+		this.someDataService = someDataService;
+	}
+
 	
 	public int calculateSum(int[] data) {
 		int sum=0;
@@ -9,5 +18,15 @@ public class SomeBusinessImpl {
 		}
 		return sum;
 	}
+	
+	public int calculateSumUsingDataService() {
+		int sum=0;
+		int[] data = someDataService.retrieveAllData();
+		for(int value:data) {
+			sum += value;
+		}
+		return sum;
+	}
 
+	
 }
